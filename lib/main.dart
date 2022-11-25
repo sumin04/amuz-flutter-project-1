@@ -1,49 +1,104 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
+import 'dart:convert';
 
-void main() {
-  runApp(const MyApp());
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+Future<Album> fetchAlbum() async {
+  final response = await http
+      .get(Uri.parse('https://jsonplaceholder.typicode.com/todos'));
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return Album.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load album');
+  }
 }
 
-class MyApp extends StatelessWidget {
+class Album {
+  final int userId;
+  final int id;
+  final String title;
+
+  Album(
+      {
+        required this.userId,
+        required this.id,
+        required this.title,
+      }
+  );
+
+  factory Album.fromJson(List<dynamic> json) {
+    dynamic elem = json.elementAt(0);
+
+    return Album(
+      userId: elem['userId'],
+      id: elem['id'],
+      title: elem['title'],
+    );
+  }
+}
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late Future<Album> futureAlbum;
+
+  @override
+  void initState() {
+    super.initState();
+    futureAlbum = fetchAlbum();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Fetch Data Example',
+      theme: ThemeData(
+        primarySwatch: Colors.orange,
+      ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Flutter를 이용한 프론트엔드 과제 1'),
-          centerTitle: true,
+          title: const Text('TEST'),
         ),
+        body: Center(
+          child: FutureBuilder<Album>(
+              future: futureAlbum,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                final title = snapshot.data!.title;
+                return Column(
+                  children: <Widget>[
+                    // Post Title
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w200,
+                        color: Colors.amber,
+                        backgroundColor: Colors.blue,
+                      ),
+                    )
+                  ],
+                );
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
 
-        // 데이터 값
-        body: Container(
-          // alignment: Alignment.bottomCenter,
-          child: Container(
-            width: double.infinity, height: 50,
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.black12)
-            ),
-            child: Text('데이터 값 불러오기',
-              style: TextStyle(fontWeight: FontWeight.w700),
-            ),
-
-          ),
-        ),
-        bottomNavigationBar: BottomAppBar(
-          // 컨테이너 보다 가볍다
-          child: SizedBox(
-            height: 50,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(Icons.phone),
-                Icon(Icons.message),
-                Icon(Icons.contact_page),
-              ],
-            ),
+              // By default, show a loading spinner.
+              return const CircularProgressIndicator();
+            },
           ),
         ),
       ),
