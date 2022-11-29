@@ -35,6 +35,10 @@ class Album {
   factory Album.fromJson(List<dynamic> json) {
     dynamic elem = json.elementAt(0);
 
+    // for(int i  = 0;  i < 6; i++){
+    //   dynamic elem = json.elementAt(i);
+    // }
+
     return Album(
       userId: elem['userId'],
       id: elem['id'],
@@ -42,6 +46,7 @@ class Album {
     );
   }
 }
+
 
 void main() => runApp(const MyApp());
 
@@ -61,35 +66,50 @@ class _MyAppState extends State<MyApp> {
     futureAlbum = fetchAlbum();
   }
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fetch Data Example',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.blueGrey,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('TEST'),
+          title: const Text('[ AMUZ ] Flutter를 이용한 과제 - 1'),
         ),
-        body: Center(
+        body: Container(
+          width: 500, height: 35, color: Colors.grey,
+          margin: EdgeInsets.all(20),
           child: FutureBuilder<Album>(
               future: futureAlbum,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                final userId = snapshot.data!.userId.toString();
+                final id = snapshot.data!.id.toString();
                 final title = snapshot.data!.title;
                 return Column(
                   children: <Widget>[
                     // Post Title
                     Text(
+                      // userId + id + title,
                       title,
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 30,
                         fontWeight: FontWeight.w200,
-                        color: Colors.amber,
-                        backgroundColor: Colors.blue,
+                        color: Colors.white,
+                        // backgroundColor: Colors.grey,
                       ),
-                    )
+                    ),
+                    // Text(
+                    //   id,
+                    //   style: TextStyle(
+                    //     fontSize: 30,
+                    //     fontWeight: FontWeight.w200,
+                    //     color: Colors.white,
+                    //     // backgroundColor: Colors.grey,
+                    //   ),
+                    // )
                   ],
                 );
               } else if (snapshot.hasError) {
@@ -102,6 +122,7 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
       ),
+      color: Colors.black,
     );
   }
 }
