@@ -11,6 +11,7 @@ Future<Album> fetchAlbum() async {
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
+
     return Album.fromJson(jsonDecode(response.body));
   } else {
     // If the server did not return a 200 OK response,
@@ -20,29 +21,23 @@ Future<Album> fetchAlbum() async {
 }
 
 class Album {
-  final int userId;
-  final int id;
-  final String title;
+  var data;
 
   Album(
       {
-        required this.userId,
-        required this.id,
-        required this.title,
+        required this.data
       }
   );
 
   factory Album.fromJson(List<dynamic> json) {
-    dynamic elem = json.elementAt(0);
+    dynamic elem = json;
 
     // for(int i  = 0;  i < 6; i++){
     //   dynamic elem = json.elementAt(i);
     // }
 
     return Album(
-      userId: elem['userId'],
-      id: elem['id'],
-      title: elem['title'],
+      data: elem
     );
   }
 }
@@ -52,6 +47,7 @@ void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -66,7 +62,6 @@ class _MyAppState extends State<MyApp> {
     futureAlbum = fetchAlbum();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -75,52 +70,58 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blueGrey,
       ),
       home: Scaffold(
+        resizeToAvoidBottomInset : false,
         appBar: AppBar(
           title: const Text('[ AMUZ ] Flutter를 이용한 과제 - 1'),
         ),
-        body: Container(
-          width: 500, height: 35, color: Colors.grey,
-          margin: EdgeInsets.all(20),
-          child: FutureBuilder<Album>(
-              future: futureAlbum,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                final userId = snapshot.data!.userId.toString();
-                final id = snapshot.data!.id.toString();
-                final title = snapshot.data!.title;
-                return Column(
-                  children: <Widget>[
-                    // Post Title
-                    Text(
-                      // userId + id + title,
-                      title,
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w200,
-                        color: Colors.white,
-                        // backgroundColor: Colors.grey,
-                      ),
-                    ),
-                    // Text(
-                    //   id,
-                    //   style: TextStyle(
-                    //     fontSize: 30,
-                    //     fontWeight: FontWeight.w200,
-                    //     color: Colors.white,
-                    //     // backgroundColor: Colors.grey,
-                    //   ),
-                    // )
-                  ],
-                );
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
+        body: SingleChildScrollView(
+          child: Container(
 
-              // By default, show a loading spinner.
-              return const CircularProgressIndicator();
-            },
+            width: 1500, height: 7050, color: Colors.grey,
+            padding: EdgeInsets.all(20),
+            child: FutureBuilder<Album>(
+              future: futureAlbum,
+              builder: (context, snapshot) {
+                // console.log*(snapshot);
+                if (snapshot.hasData) {
+
+                  final data = snapshot.data!.data;
+
+                  // return Column(
+                  List<Widget> users = [];
+                  print(users);
+                  data.forEach((user){
+                    String userId = user['userId'].toString();
+                    String id = user['id'].toString();
+                    String title = user['title'];
+                    // Post Title
+                    users.add(Text(
+                      // userId + id + title,
+                        [userId,id,title].join(" "),
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w200,
+                          color: Colors.white,
+                          // backgroundColor: Colors.grey,
+                        )
+                    ));
+                  });
+                  print(users);
+                  return Column(
+                    children: users,
+                  );
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+
+                // By default, show a loading spinner.
+                return const CircularProgressIndicator();
+              },
+            ),
           ),
-        ),
+        )
+
+
       ),
       color: Colors.black,
     );
