@@ -13,15 +13,15 @@ final router = GoRouter(
         GoRoute(
             path: 'first/:userId',
           builder: (BuildContext context, GoRouterState state) {
-            return FirstPage(
-              userId: state.params['userId'] as int,
-            );
+            // return FirstPage(userId: state.params['userId'] as List<String>);
+            return FirstPage();
           },
         ),
         GoRoute(
           path: 'second',
           builder: (BuildContext context, GoRouterState state) {
-            return SecondPage(userId: '',);
+            // return SecondPage(userId: '',);
+             return SecondPage(userId: state.params['userId'] as String);
           },
         ),
       ],

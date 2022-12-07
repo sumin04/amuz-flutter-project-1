@@ -19,7 +19,7 @@ import 'package:provider_app/pages/second_page.dart';
 import 'package:provider_app/router.dart';
 
 void main() {
-  runApp ( MyApp());
+  runApp (MyApp());
 }
 class MyApp extends StatelessWidget {
   // const MyApp({super.key});

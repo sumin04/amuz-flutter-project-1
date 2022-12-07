@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider_app/pages/home_page.dart';
 
 class SecondPage extends StatefulWidget {
   final String userId;
@@ -30,7 +31,10 @@ class SecondPageState extends State<SecondPage> {
                     borderRadius: BorderRadius.circular(15)
                 )
             ),
-            onPressed: () => context.go('/second'),
+            // onPressed: () => context.go('/'),
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+            },
             child: Container(
               padding: EdgeInsets.fromLTRB(40, 20, 40, 20),
               child: Text('안돼 돌아가',

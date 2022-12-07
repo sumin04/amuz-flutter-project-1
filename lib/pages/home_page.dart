@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider_app/pages/first_page.dart';
 import 'package:provider_app/pages/second_page.dart';
 import 'package:provider_app/router.dart';
 import 'package:provider_app/main.dart';
@@ -46,8 +47,11 @@ class _HomePageState extends State<HomePage> {
               // onPressed: () => context.go('/first/:userId'),
               // onPressed: () => context.go('/second'),
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => SecondPage(userId: '',)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => FirstPage()));
               },
+              // onPressed: () {
+              //   context.go('/FirstPage', extra: [1, 2, 3, 4, 5, 6, 7]);
+              // },
               child: Container(
                 padding: EdgeInsets.fromLTRB(40, 20, 40, 20),
                 child: Text('User List Page로 이동하기',

@@ -3,11 +3,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider_app/pages/home_page.dart';
 
 import '../fetch_post.dart';
+import 'second_page.dart';
 
 class FirstPage extends StatefulWidget  {
-  FirstPage({Key? key, required int userId}) : super(key: key);
+  FirstPage({Key? key, }) : super(key: key);
 
   @override
   _FirstPageState createState() => _FirstPageState();
@@ -20,15 +22,16 @@ class FirstPage extends StatefulWidget  {
 }
 // the screen of the 1 page
 class _FirstPageState extends State<FirstPage> {
-  late Future<List> test;
+  // late Future<List> data ;
+  Future<List>? data ;
   List<dynamic> list = [];
 
   List<dynamic> total = [];
   List<dynamic> totals = [];
 
   Future<dynamic> init() async {
-    test = fetchPost(list);
-    await test;
+    data = fetchPost(list);
+    await data;
 
     print('start map');
     for(var i = 1 ; i < list.length ; i++){
@@ -56,6 +59,7 @@ class _FirstPageState extends State<FirstPage> {
     // 위젯이 생성될때 처음으로 호출되는 메서드
     // initState는 오직 한번 만 호출 된다.또한 반드시 super.initState()를 호출해야 한다.
     super.initState();
+    init();
   }
 
   @override
@@ -81,7 +85,7 @@ class _FirstPageState extends State<FirstPage> {
           toolbarHeight: 70,
         ),
         body: FutureBuilder(
-            future: test,
+            future: data,
             builder: (BuildContext context, AsyncSnapshot snapshot){
               if(snapshot.hasData == false){
                 return SizedBox(
@@ -120,9 +124,12 @@ class _FirstPageState extends State<FirstPage> {
                                   borderRadius: BorderRadius.circular(50),
                                 ),
                                 child: TextButton(
+                                  // onPressed: (){
+                                  //   var userId = total[index];
+                                  //   context.go('/first/$userId');
+                                  // },
                                   onPressed: (){
-                                    var userId = total[index];
-                                    context.go('/first/$userId');
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => SecondPage(userId: '')));
                                   },
                                   child: Text(total[index].toString(),
                                     style: TextStyle(
