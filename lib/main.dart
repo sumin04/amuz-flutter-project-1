@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_web_libraries_in_flutter, use_key_in_widget_constructors
+// ignore_for_file: avoid_web_libraries_in_flutter, use_key_in_widget_constructors, recursive_getters
 
 // import 'dart:js';
 
@@ -21,22 +21,29 @@ import 'package:provider_app/router.dart';
 void main() {
   runApp (MyApp());
 }
+
+
 class MyApp extends StatelessWidget {
-  // const MyApp({super.key});
+
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var state;
-    return MaterialApp(
+    return MaterialApp.router(
+      // routerDelegate: router.routerDelegate,
+      // routeInformationParser: router.routeInformationParser,
+      // routeInformationProvider: router.routeInformationProvider,
+      // routerConfig: router,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      routerConfig: router,
     );
   }
-}
 
+
+}
 
 // error
 class ErrorScreen extends StatelessWidget {
@@ -45,8 +52,7 @@ class ErrorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Text("Error"),
       ),
@@ -55,7 +61,6 @@ class ErrorScreen extends StatelessWidget {
             error.toString()
         ),
       ),
-      ),
-    );
+      );
   }
 }

@@ -1,5 +1,5 @@
 
-// ignore_for_file: library_private_types_in_public_api, sort_child_properties_last, unused_local_variable
+// ignore_for_file: library_private_types_in_public_api, sort_child_properties_last, unused_local_variable, unused_import, unnecessary_brace_in_string_interps
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -16,9 +16,6 @@ class FirstPage extends StatefulWidget  {
 // static이란 일반 객체를 만들 때, 같이 메모리에 저장하는 것이 아닌
 // 따로 메모리를 두어 static 구문을 객체가 공유하여 사용할 수 있게 해주는 구문
 // static const String title = '[ Amuz - project ] Home Page';
-
-// 라우터 세팅
-
 }
 // the screen of the 1 page
 class _FirstPageState extends State<FirstPage> {
@@ -64,50 +61,50 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
-      ),
-
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text('User List Page',
             style: TextStyle(
               fontSize: 23,
-              color: Colors.black,
             ),
           ),
           automaticallyImplyLeading: true,
           leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios),
-              // onPressed: () { Get.back(); }),
-              onPressed: () { context.pop(); }),
-          toolbarHeight: 70,
-        ),
-        body: FutureBuilder(
+            icon: Icon(Icons.arrow_back_ios),
+            // 뒤로가기 버튼
+            onPressed: () {
+              // Navigator.pop(context);
+              context.go('/');
+            }
+          ),
+            toolbarHeight: 70,
+          ),
+          body: FutureBuilder(
             future: data,
             builder: (BuildContext context, AsyncSnapshot snapshot){
               if(snapshot.hasData == false){
-                return SizedBox(
-                  child: CircularProgressIndicator(
-                    backgroundColor: Colors.blueAccent,
-                    strokeWidth: 20,
+                return Center(
+                  child: SizedBox(
+                    width: 200,
+                    height: 200,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.blue.shade900),
+                      strokeWidth: 20,
+                    )
                   ),
-                  width: 200,
-                  height: 200,
                 );
               } else if(snapshot.hasError){
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
                       'Error: ${snapshot.error}'
-                  ),
-                );
-              }
-              else{
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListView.builder(
+                    ),
+                  );
+                }
+                else{
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
                       itemCount: total.length,
                       itemBuilder: (context, index) {
                         final document = total[index];
@@ -116,37 +113,33 @@ class _FirstPageState extends State<FirstPage> {
 
                           },
                           child: SizedBox(
-                            width: 200,
-                            height: 150,
+                            height: 120,
                             child: Card(
-                                margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                                child: TextButton(
-                                  // onPressed: (){
-                                  //   var userId = total[index];
-                                  //   context.go('/first/$userId');
-                                  // },
-                                  onPressed: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => SecondPage(userId: '')));
-                                  },
-                                  child: Text(total[index].toString(),
-                                    style: TextStyle(
-                                      fontSize: 30,
-                                    ),
+                              margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              child: TextButton(
+                                onPressed: (){
+                                //   var userId = total[index];
+                                  context.go('/second/:${total[index]}');
+                                },
+                                child: Text(total[index].toString(),
+                                  style: TextStyle(
+                                    fontSize: 30,
                                   ),
-                                )
+                                ),
+                              )
                             ),
                           ),
                         );
                       }
-                  ),
-                );
+                    ),
+                  );
+                }
               }
-            }
-        ),
-      ),
+          ),
+
     );
   }
 }

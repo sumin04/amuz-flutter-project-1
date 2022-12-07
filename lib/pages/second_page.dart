@@ -1,4 +1,6 @@
 
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider_app/pages/home_page.dart';
@@ -12,10 +14,18 @@ class SecondPage extends StatefulWidget {
 class SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('상세데이터 페이지임',
-    ),
+    appBar: AppBar(title: const Text('Post List Page'),
       toolbarHeight: 70,
       backgroundColor: Colors.black54,
+
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back_ios),
+        // 뒤로가기 버튼
+        onPressed: () {
+          // Navigator.pop(context);
+          context.go('/first');
+        }
+      ),
     ),
     body: Container(
       margin: EdgeInsets.symmetric(vertical: 20.0),
@@ -31,13 +41,10 @@ class SecondPageState extends State<SecondPage> {
                     borderRadius: BorderRadius.circular(15)
                 )
             ),
-            // onPressed: () => context.go('/'),
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
-            },
+            onPressed: () => context.go('/'),
             child: Container(
               padding: EdgeInsets.fromLTRB(40, 20, 40, 20),
-              child: Text('안돼 돌아가',
+              child: Text('안돼 홈페이지로 돌아가',
                 style: TextStyle(fontWeight: FontWeight.normal,fontSize: 20, color: Colors.black),
               ),
             ),

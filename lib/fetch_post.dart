@@ -1,8 +1,11 @@
 
+// ignore_for_file: unused_local_variable
+
 import 'dart:convert';
 
 import 'dart:developer';
 import 'package:http/http.dart' as http;
+
 // Future이란 지금은 없지만 미래에 요청한 데이터 혹은 에러가 담길 그릇
 Future<List> fetchPost(List<dynamic> list) async {
   List<dynamic> data = [];
