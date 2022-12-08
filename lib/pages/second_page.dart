@@ -17,7 +17,6 @@ class SecondPageState extends State<SecondPage> {
     appBar: AppBar(title: const Text('Post List Page'),
       toolbarHeight: 70,
       backgroundColor: Colors.black54,
-
       leading: IconButton(
         icon: Icon(Icons.arrow_back_ios),
         // 뒤로가기 버튼
@@ -44,7 +43,7 @@ class SecondPageState extends State<SecondPage> {
             onPressed: () => context.go('/'),
             child: Container(
               padding: EdgeInsets.fromLTRB(40, 20, 40, 20),
-              child: Text('안돼 홈페이지로 돌아가',
+              child: Text('어림도 없지 처음으로 돌아가',
                 style: TextStyle(fontWeight: FontWeight.normal,fontSize: 20, color: Colors.black),
               ),
             ),
