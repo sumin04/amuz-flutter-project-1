@@ -52,15 +52,16 @@ class SecondPageState extends State<SecondPage> {
         // 하단 탭 메뉴 구성
         BottomNavigationBarItem(
             label: '전체',
-            icon: Icon(Icons.home)
+            icon: Icon(Icons.clear_all)
+            // icon: Icon(Icons.clear_all)
         ),
         BottomNavigationBarItem(
             label: '작성중',
-            icon: Icon(Icons.home)
+            icon: Icon(Icons.edit)
         ),
         BottomNavigationBarItem(
             label: '완료',
-            icon: Icon(Icons.home)
+            icon: Icon(Icons.done_all)
         ),
       ],
     ),
