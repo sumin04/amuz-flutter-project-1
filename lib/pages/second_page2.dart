@@ -26,7 +26,7 @@ class Page2 extends StatelessWidget {
             onPressed: () => context.go('/'),
             child: Container(
               padding: EdgeInsets.fromLTRB(40, 20, 40, 20),
-              child: Text('응 없어',
+              child: Text('너 나가',
                 style: TextStyle(fontWeight: FontWeight.normal,fontSize: 20, color: Colors.black),
               ),
             ),

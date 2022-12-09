@@ -61,6 +61,6 @@ class ErrorScreen extends StatelessWidget {
             error.toString()
         ),
       ),
-      );
+    );
   }
 }

@@ -22,10 +22,10 @@ final router = GoRouter(
           },
         ),
         GoRoute(
+          name: 'second',
           path: 'second/:userId',
           builder: (BuildContext context, GoRouterState state) {
-            // return SecondPage(userId: '',);
-            return SecondPage(userId: state.params['userId'] as String);
+            return SecondPage(userId: state.params['userId'] as String , totals: state.extra as List,);
           },
         ),
       ],

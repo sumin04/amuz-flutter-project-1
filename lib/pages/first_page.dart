@@ -9,18 +9,17 @@ import '../fetch_post.dart';
 import 'second_page.dart';
 
 class FirstPage extends StatefulWidget  {
-  FirstPage({Key? key, }) : super(key: key);
+  FirstPage({Key? key}) : super(key: key);
 
   @override
   _FirstPageState createState() => _FirstPageState();
 // static이란 일반 객체를 만들 때, 같이 메모리에 저장하는 것이 아닌
 // 따로 메모리를 두어 static 구문을 객체가 공유하여 사용할 수 있게 해주는 구문
-// static const String title = '[ Amuz - project ] Home Page';
 }
-// the screen of the 1 page
+
+
 class _FirstPageState extends State<FirstPage> {
-  // late Future<List> data ;
-  Future<List>? data ;
+  Future<List>? data;
   List<dynamic> list = [];
 
   List<dynamic> total = [];
@@ -39,9 +38,11 @@ class _FirstPageState extends State<FirstPage> {
       }
       total.add(list[i]['userId']);
     }
+    print(total);
 
-    print('end map');
+    // print('end map');
     return totals;
+
     // for(var i = 0; i < totals.length; i++){
     //   if(totals[i]['userId'] == 클릭한 유저 아이디 번호){
     //     print(totals[i]);
@@ -108,27 +109,33 @@ class _FirstPageState extends State<FirstPage> {
                       itemCount: total.length,
                       itemBuilder: (context, index) {
                         final document = total[index];
+
                         return InkWell(
                           onTap: () {
 
                           },
                           child: SizedBox(
-                            height: 120,
+                            height: 110,
                             child: Card(
-                              margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                              margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
                               child: TextButton(
                                 onPressed: (){
                                 //   var userId = total[index];
-                                  context.go('/second/:${total[index]}');
+                                  context.go('/second/:${total[index]}', extra: totals);
+                                // context.push(
+                                //   '/second/:${total[index]}',
+                                //   arguments: (totals),
+                                // );
                                 },
                                 child: Text(total[index].toString(),
                                   style: TextStyle(
                                     fontSize: 30,
                                   ),
                                 ),
+
                               )
                             ),
                           ),
@@ -139,8 +146,6 @@ class _FirstPageState extends State<FirstPage> {
                 }
               }
           ),
-
     );
   }
 }
-

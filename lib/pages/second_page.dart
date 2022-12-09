@@ -11,11 +11,14 @@ import 'second_page3.dart';
 
 class SecondPage extends StatefulWidget {
   final String userId;
-  const SecondPage({Key? key, required this.userId}) : super(key: key);
+  final List totals;
+  const SecondPage({Key? key, required this.userId, required this.totals}) : super(key: key);
+
   @override
   SecondPageState createState() => SecondPageState();
 }
 class SecondPageState extends State<SecondPage> {
+
   var _index = 0;
   var _pages = [
     Page1(),
@@ -23,9 +26,12 @@ class SecondPageState extends State<SecondPage> {
     Page3(),
   ];
 
+  get totals => totals;
+
+
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Post List Page'),
+    appBar: AppBar(title: Text(totals),
       toolbarHeight: 70,
       backgroundColor: Colors.black54,
       leading: IconButton(
@@ -39,7 +45,7 @@ class SecondPageState extends State<SecondPage> {
     body: _pages[_index],
     bottomNavigationBar: BottomNavigationBar(
       selectedIconTheme: IconThemeData(
-        color: Colors.black26,
+        color: Colors.blueAccent,
       ),
       selectedItemColor: Colors.grey,
       onTap: (index){
@@ -66,6 +72,9 @@ class SecondPageState extends State<SecondPage> {
       ],
     ),
   );
+  // void Test(){
+  //   print(totals);
+  // }
 }
 
 // class SecondPage extends StatefulWidget {
