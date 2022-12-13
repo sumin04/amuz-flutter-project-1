@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider_app/pages/home_page.dart';
@@ -13,9 +15,10 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) => HomePage(),
-      routes: <GoRoute>[
+    ),
         GoRoute(
-          path: 'first',
+          name: 'first',
+          path: '/first',
           builder: (BuildContext context, GoRouterState state) {
             // return FirstPage(userId: state.params['userId'] as List<String>);
             return FirstPage();
@@ -23,12 +26,12 @@ final router = GoRouter(
         ),
         GoRoute(
           name: 'second',
-          path: 'second/:userId',
+          path: '/second/:userId',
           builder: (BuildContext context, GoRouterState state) {
-            return SecondPage(userId: state.params['userId']);
+            log('로그 테스트${state.params['userId']}');
+            return SecondPage(userId: state.params['userId'] as String);
+            // return SecondPage(userId: state.params['userId'] as String);
           },
-        ),
-      ],
     ),
   ],
 );

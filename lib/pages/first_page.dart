@@ -1,6 +1,8 @@
 
 // ignore_for_file: library_private_types_in_public_api, sort_child_properties_last, unused_local_variable, unused_import, unnecessary_brace_in_string_interps
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider_app/pages/home_page.dart';
@@ -28,10 +30,10 @@ class _FirstPageState extends State<FirstPage> {
     data = fetchPost(list);
     await data;
 
-    for(var i = 1 ; i < list.length ; i++){
-      totals.add(list[i-1]);
-      if(list[i-1]['userId'] == list[i]['userId']){
-        total.remove(list[i-1]['userId']);
+    for(var i = 0 ; i < list.length ; i++){
+      totals.add(list[i]);
+      if(list[i]['userId'] == list[i]['userId']){
+        total.remove(list[i]['userId']);
       }
       total.add(list[i]['userId']);
     }
@@ -119,7 +121,8 @@ class _FirstPageState extends State<FirstPage> {
                               child: TextButton(
                                 onPressed: (){
                                 //   var userId = total[index];
-                                  context.go('/second/:${total[index]}');
+                                  log('아무거나${total[index]}');
+                                  context.go('/second/${total[index]}');
                                 // context.push(
                                 //   '/second/:${total[index]}',
                                 //   arguments: (totals),

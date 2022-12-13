@@ -1,5 +1,7 @@
 
-// ignore_for_file: unused_import, use_key_in_widget_constructor, must_be_immutables, use_key_in_widget_constructor, library_private_types_in_public_api, library_private_types_in_public_apis, unnecessary_brace_in_string_interps, duplicate_ignor, unnecessary_newe, unnecessary_ne, duplicate_ignorew, duplicate_ignore, unnecessary_new
+// ignore_for_file: unused_import, use_key_in_widget_constructor, must_be_immutables, use_key_in_widget_constructor, library_private_types_in_public_api, library_private_types_in_public_apis, unnecessary_brace_in_string_interps, duplicate_ignor, unnecessary_newe, unnecessary_ne, duplicate_ignorew, duplicate_ignore, unnecessary_ne, must_be_immutablew, must_be_immutable, use_key_in_widget_constructors
+
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -8,8 +10,9 @@ import 'package:provider_app/pages/home_page.dart';
 import '../fetch_post.dart';
 
 class Page1 extends StatefulWidget {
-  Page1({Key? key, required this.userId,}) : super(key: key);
-   final  userId;
+  var userId;
+  Page1({Key? key, required this.userId}) : super(key: key);
+   // final userId;
 
   @override
   _UserDataListState createState() => _UserDataListState();
@@ -34,11 +37,12 @@ class _UserDataListState extends State<Page1> {
     //   }
     // }
 
-    for(var i = 0; i < list.length; i++){
-      if(list[i]['userId'] == []){
-        test.add(list[i]['title']);
+    for(var i = 1; i < list.length; i++){
+      if(list[i]['userId'] == 1){
+        test.add(list[i]);
       }
     }
+    print('test');
 
     // print(userId);
 
