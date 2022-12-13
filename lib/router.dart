@@ -25,7 +25,7 @@ final router = GoRouter(
           name: 'second',
           path: 'second/:userId',
           builder: (BuildContext context, GoRouterState state) {
-            return SecondPage(userId: state.params['userId'] as String , totals: state.extra as List,);
+            return SecondPage(userId: state.params['userId']);
           },
         ),
       ],

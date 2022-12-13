@@ -15,8 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // var _router;
-
   @override
   // BuildContext는 위젯의 정보를 가지고 있는것이며,
   // build 메소드에 의해 전해지는 context는 부모 위젯까지의 정보만을 가지고 있다.

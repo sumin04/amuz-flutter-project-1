@@ -22,18 +22,12 @@ void main() {
   runApp (MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      // routerDelegate: router.routerDelegate,
-      // routeInformationParser: router.routeInformationParser,
-      // routeInformationProvider: router.routeInformationProvider,
-      // routerConfig: router,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -41,8 +35,6 @@ class MyApp extends StatelessWidget {
       routerConfig: router,
     );
   }
-
-
 }
 
 // error

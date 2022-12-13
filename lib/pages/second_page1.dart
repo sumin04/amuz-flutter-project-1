@@ -1,46 +1,99 @@
 
-// ignore_for_file: unused_import, use_key_in_widget_constructor, must_be_immutables, use_key_in_widget_constructors
+// ignore_for_file: unused_import, use_key_in_widget_constructor, must_be_immutables, use_key_in_widget_constructor, library_private_types_in_public_api, library_private_types_in_public_apis, unnecessary_brace_in_string_interps, duplicate_ignore
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider_app/pages/home_page.dart';
 
-// ignore: must_be_immutable
-class Page1 extends StatelessWidget {
+import '../fetch_post.dart';
 
-  // data에서 userId, id, title 받아와서 출력해야댐
+class Page1 extends StatefulWidget {
+  Page1({Key? key, required this.userId,}) : super(key: key);
+  late final dynamic userId;
+  @override
+  _UserDataListState createState() => _UserDataListState();
+
+}
+
+class _UserDataListState extends State<Page1> {
+  // dynamic userIdTest = userId;
+  Future<List>? data;
+  List<dynamic> list = [];
+
+  List<dynamic> test = [];
+  List<dynamic> total = [];
+
+  Future<dynamic> init() async {
+    data = fetchPost(list);
+    await data;
+
+    for(var i = 1; i < list.length; i++){
+      if(list[i]['userId'] == 1){
+        test.add(list[i]);
+      }
+    }
+
+    // for(var i = 0; i < list.length; i++){
+    //   if(list[i]['userId'] == userId{
+    //     test.add(list[i]['title']);
+    //   }
+    // }
+
+
+    // print(test.length);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    init();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.fromLTRB(40, 20, 40, 20),
-      alignment: Alignment.center,
-      child: Column(
-        children: <Widget>[
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white60,
-                side: BorderSide(width:1, color:Colors.grey), //border width and color
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)
+    return FutureBuilder(
+      future: data,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        if(snapshot.hasData == false){
+          return Center(
+            child: SizedBox(
+                width: 200,
+                height: 200,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.blue.shade900),
+                  strokeWidth: 20,
                 )
             ),
-            onPressed: () => context.go('/'),
-            child: Container(
-              padding: EdgeInsets.fromLTRB(40, 20, 40, 20),
-              child: Text('대충살자',
-                style: TextStyle(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 20,
-                    color: Colors.black
-                ),
-              ),
+          );
+        } else if(snapshot.hasError){
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+                'Error: ${snapshot.error}'
             ),
-          ),
-          const SizedBox(height: 10,),
-        ],
-      ),
+          );
+        }
+        else{
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView.builder(
+                itemCount: test.length,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
+
+                    },
+                    child: Text(test[index].toString(),
+                      style: TextStyle(
+                        fontSize: 10,
+                      ),
+                    ),
+                  );
+                }
+            ),
+          );
+        }
+      },
     );
   }
 }

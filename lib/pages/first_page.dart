@@ -17,7 +17,6 @@ class FirstPage extends StatefulWidget  {
 // 따로 메모리를 두어 static 구문을 객체가 공유하여 사용할 수 있게 해주는 구문
 }
 
-
 class _FirstPageState extends State<FirstPage> {
   Future<List>? data;
   List<dynamic> list = [];
@@ -29,18 +28,14 @@ class _FirstPageState extends State<FirstPage> {
     data = fetchPost(list);
     await data;
 
-    print('start map');
     for(var i = 1 ; i < list.length ; i++){
       totals.add(list[i-1]);
       if(list[i-1]['userId'] == list[i]['userId']){
         total.remove(list[i-1]['userId']);
-
       }
       total.add(list[i]['userId']);
     }
-    print(total);
 
-    // print('end map');
     return totals;
 
     // for(var i = 0; i < totals.length; i++){
@@ -124,7 +119,7 @@ class _FirstPageState extends State<FirstPage> {
                               child: TextButton(
                                 onPressed: (){
                                 //   var userId = total[index];
-                                  context.go('/second/:${total[index]}', extra: totals);
+                                  context.go('/second/:${total[index]}');
                                 // context.push(
                                 //   '/second/:${total[index]}',
                                 //   arguments: (totals),
@@ -135,7 +130,6 @@ class _FirstPageState extends State<FirstPage> {
                                     fontSize: 30,
                                   ),
                                 ),
-
                               )
                             ),
                           ),

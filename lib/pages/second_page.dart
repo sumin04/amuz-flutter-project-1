@@ -5,33 +5,30 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider_app/pages/home_page.dart';
 
+
 import 'second_page1.dart';
 import 'second_page2.dart';
 import 'second_page3.dart';
 
-class SecondPage extends StatefulWidget {
-  final String userId;
-  final List totals;
-  const SecondPage({Key? key, required this.userId, required this.totals}) : super(key: key);
 
+class SecondPage extends StatefulWidget {
+  final  userId;
+  const SecondPage({Key? key, required this.userId,}) : super(key: key);
   @override
   SecondPageState createState() => SecondPageState();
 }
-class SecondPageState extends State<SecondPage> {
 
+class SecondPageState extends State<SecondPage> {
   var _index = 0;
   var _pages = [
-    Page1(),
+    Page1(userId: ),
     Page2(),
     Page3(),
   ];
 
-  get totals => totals;
-
-
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: Text(totals),
+    appBar: AppBar(title: const Text('Post List Page'),
       toolbarHeight: 70,
       backgroundColor: Colors.black54,
       leading: IconButton(
@@ -72,9 +69,6 @@ class SecondPageState extends State<SecondPage> {
       ],
     ),
   );
-  // void Test(){
-  //   print(totals);
-  // }
 }
 
 // class SecondPage extends StatefulWidget {
