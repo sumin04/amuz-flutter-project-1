@@ -1,30 +1,37 @@
 
-// ignore_for_file: unused_import, prefer_final_fields
+// ignore_for_file: unused_import, prefer_final_field, unnecessary_news, unnecessary_new, prefer_final_field, unused_fields, unused_field, prefer_final_fields, duplicate_ignore
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider_app/pages/home_page.dart';
 
-
 import 'second_page1.dart';
 import 'second_page2.dart';
 import 'second_page3.dart';
 
-
 class SecondPage extends StatefulWidget {
-  final  userId;
+  final userId;
   const SecondPage({Key? key, required this.userId,}) : super(key: key);
   @override
-  SecondPageState createState() => SecondPageState();
+  State<StatefulWidget> createState() => new SecondPageState();
 }
 
 class SecondPageState extends State<SecondPage> {
   var _index = 0;
   var _pages = [
-    Page1(userId: ),
+    Page1(userId: []),
     Page2(),
     Page3(),
   ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(widget.userId);
+  }
+}
+
+class AnotherClass extends StatelessWidget {
+  const AnotherClass({super.key});
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -39,18 +46,14 @@ class SecondPageState extends State<SecondPage> {
         }
       ),
     ),
-    body: _pages[_index],
     bottomNavigationBar: BottomNavigationBar(
       selectedIconTheme: IconThemeData(
         color: Colors.blueAccent,
       ),
       selectedItemColor: Colors.grey,
       onTap: (index){
-        setState(() {
-          _index = index;
-        });
+
       },
-      currentIndex: _index,
       items: <BottomNavigationBarItem>[
         // 하단 탭 메뉴 구성
         BottomNavigationBarItem(

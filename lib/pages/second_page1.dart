@@ -1,5 +1,5 @@
 
-// ignore_for_file: unused_import, use_key_in_widget_constructor, must_be_immutables, use_key_in_widget_constructor, library_private_types_in_public_api, library_private_types_in_public_apis, unnecessary_brace_in_string_interps, duplicate_ignore
+// ignore_for_file: unused_import, use_key_in_widget_constructor, must_be_immutables, use_key_in_widget_constructor, library_private_types_in_public_api, library_private_types_in_public_apis, unnecessary_brace_in_string_interps, duplicate_ignor, unnecessary_newe, unnecessary_ne, duplicate_ignorew, duplicate_ignore, unnecessary_new
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -9,10 +9,11 @@ import '../fetch_post.dart';
 
 class Page1 extends StatefulWidget {
   Page1({Key? key, required this.userId,}) : super(key: key);
-  late final dynamic userId;
+   final  userId;
+
   @override
   _UserDataListState createState() => _UserDataListState();
-
+  // State<StatefulWidget> createState() => new _UserDataListState();
 }
 
 class _UserDataListState extends State<Page1> {
@@ -27,18 +28,19 @@ class _UserDataListState extends State<Page1> {
     data = fetchPost(list);
     await data;
 
-    for(var i = 1; i < list.length; i++){
-      if(list[i]['userId'] == 1){
-        test.add(list[i]);
-      }
-    }
-
-    // for(var i = 0; i < list.length; i++){
-    //   if(list[i]['userId'] == userId{
-    //     test.add(list[i]['title']);
+    // for(var i = 1; i < list.length; i++){
+    //   if(list[i]['userId'] == 1){
+    //     test.add(list[i]);
     //   }
     // }
 
+    for(var i = 0; i < list.length; i++){
+      if(list[i]['userId'] == []){
+        test.add(list[i]['title']);
+      }
+    }
+
+    // print(userId);
 
     // print(test.length);
   }
