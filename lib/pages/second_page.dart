@@ -23,7 +23,7 @@ class SecondPage extends StatefulWidget {
 }
 
 class SecondPageState extends State<SecondPage> {
-  var _index = 0;
+  var _index = 1;
   var _pages = [
 
   ];
@@ -32,8 +32,8 @@ class SecondPageState extends State<SecondPage> {
   void initState() {
     _pages = [
       Page1(userId: widget.userId),
-      Page2(),
-      Page3(),
+      Page2(userId: widget.userId),
+      Page3(userId: widget.userId),
     ];
     // TODO: implement initState
     super.initState();

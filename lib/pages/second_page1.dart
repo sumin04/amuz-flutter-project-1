@@ -3,8 +3,6 @@
 
 import 'dart:convert';
 import 'dart:developer';
-// import 'dart:html' as html;
-import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -80,9 +78,11 @@ class _UserDataListState extends State<Page1> {
                     onTap: () {
 
                     },
-                    child: Text(test[index].toString(),
-                      style: TextStyle(
-                        fontSize: 16,
+                    child: Card(
+                      child: Text(test[index].toString(),
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   );
