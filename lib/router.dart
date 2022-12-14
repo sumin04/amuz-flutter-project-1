@@ -32,7 +32,7 @@ final router = GoRouter(
             return SecondPage(userId: state.params['userId'] as String);
             // return SecondPage(userId: state.params['userId'] as String);
           },
-    ),
+        ),
   ],
 );
 // class routes extends StatefulWidget {

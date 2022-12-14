@@ -39,14 +39,6 @@ class _FirstPageState extends State<FirstPage> {
     }
 
     return totals;
-
-    // for(var i = 0; i < totals.length; i++){
-    //   if(totals[i]['userId'] == 클릭한 유저 아이디 번호){
-    //     print(totals[i]);
-    //   }
-    // }
-    // print(total);
-    // print(totals);
   }
 
   @override
@@ -120,13 +112,8 @@ class _FirstPageState extends State<FirstPage> {
                               ),
                               child: TextButton(
                                 onPressed: (){
-                                //   var userId = total[index];
-                                  log('아무거나${total[index]}');
+                                  log('FirstPage${total[index]}');
                                   context.go('/second/${total[index]}');
-                                // context.push(
-                                //   '/second/:${total[index]}',
-                                //   arguments: (totals),
-                                // );
                                 },
                                 child: Text(total[index].toString(),
                                   style: TextStyle(

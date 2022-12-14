@@ -1,7 +1,10 @@
 
-// ignore_for_file: unused_import, use_key_in_widget_constructor, must_be_immutables, use_key_in_widget_constructor, library_private_types_in_public_api, library_private_types_in_public_apis, unnecessary_brace_in_string_interps, duplicate_ignor, unnecessary_newe, unnecessary_ne, duplicate_ignorew, duplicate_ignore, unnecessary_ne, must_be_immutablew, must_be_immutable, use_key_in_widget_constructors
+// ignore_for_file: unused_import, use_key_in_widget_constructor, must_be_immutables, use_key_in_widget_constructor, library_private_types_in_public_api, library_private_types_in_public_apis, unnecessary_brace_in_string_interps, duplicate_ignor, unnecessary_newe, unnecessary_ne, duplicate_ignorew, duplicate_ignore, unnecessary_ne, must_be_immutablew, must_be_immutable, use_key_in_widget_constructor, avoid_web_libraries_in_flutter, unused_local_variables, unused_local_variable
 
+import 'dart:convert';
 import 'dart:developer';
+// import 'dart:html' as html;
+import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -11,42 +14,30 @@ import '../fetch_post.dart';
 
 class Page1 extends StatefulWidget {
   var userId;
+
   Page1({Key? key, required this.userId}) : super(key: key);
-   // final userId;
 
   @override
   _UserDataListState createState() => _UserDataListState();
-  // State<StatefulWidget> createState() => new _UserDataListState();
+
 }
 
 class _UserDataListState extends State<Page1> {
-  // dynamic userIdTest = userId;
   Future<List>? data;
   List<dynamic> list = [];
 
   List<dynamic> test = [];
-  List<dynamic> total = [];
 
   Future<dynamic> init() async {
+    final hi = int.parse(widget.userId);
     data = fetchPost(list);
     await data;
 
-    // for(var i = 1; i < list.length; i++){
-    //   if(list[i]['userId'] == 1){
-    //     test.add(list[i]);
-    //   }
-    // }
-
-    for(var i = 1; i < list.length; i++){
-      if(list[i]['userId'] == 1){
+    for(var i = 0; i < list.length; i++){
+      if(list[i]['userId'] == hi){
         test.add(list[i]);
       }
     }
-    print('test');
-
-    // print(userId);
-
-    // print(test.length);
   }
 
   @override
@@ -91,7 +82,7 @@ class _UserDataListState extends State<Page1> {
                     },
                     child: Text(test[index].toString(),
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 16,
                       ),
                     ),
                   );
