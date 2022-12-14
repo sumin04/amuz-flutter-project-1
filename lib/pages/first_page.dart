@@ -112,7 +112,7 @@ class _FirstPageState extends State<FirstPage> {
                               ),
                               child: TextButton(
                                 onPressed: (){
-                                  log('FirstPage${total[index]}');
+                                  // log('FirstPage${total[index]}');
                                   context.go('/second/${total[index]}');
                                 },
                                 child: Text(total[index].toString(),

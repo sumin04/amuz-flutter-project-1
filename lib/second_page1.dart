@@ -8,31 +8,31 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider_app/pages/home_page.dart';
 
-import '../fetch_post.dart';
+import 'fetch_post.dart';
 
-class Page2 extends StatefulWidget {
+class Page1 extends StatefulWidget {
   var userId;
 
-  Page2({Key? key, required this.userId}) : super(key: key);
+  Page1({Key? key, required this.userId}) : super(key: key);
 
   @override
   _UserDataListState createState() => _UserDataListState();
-
 }
 
-class _UserDataListState extends State<Page2> {
+class _UserDataListState extends State<Page1> {
   Future<List>? data;
   List<dynamic> list = [];
 
   List<dynamic> test = [];
 
   Future<dynamic> init() async {
-    final hi = int.parse(widget.userId);
+    final userId = int.parse(widget.userId);
     data = fetchPost(list);
+    // list = await data;
     await data;
 
     for(var i = 0; i < list.length; i++){
-      if(list[i]['userId'] == hi && list[i]['completed'] == false){
+      if(list[i]['userId'] == userId){
         test.add(list[i]);
       }
     }
@@ -78,11 +78,20 @@ class _UserDataListState extends State<Page2> {
                     onTap: () {
 
                     },
-                    child: Card(
-                      child: Text(test[index].toString(),
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
+                    child: SizedBox(
+                      height: 90,
+                      child: Card(
+                          child: TextButton(
+                            onPressed: (){
+                              // log('FirstPage${total[index]}');
+                              context.go('/second/:userId/detail');
+                            },
+                            child: Text(test[index].toString(),
+                              style: TextStyle(
+                                fontSize: 30,
+                              ),
+                            ),
+                          )
                       ),
                     ),
                   );

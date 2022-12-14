@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider_app/pages/home_page.dart';
 
-import 'second_page1.dart';
-import 'second_page2.dart';
-import 'second_page3.dart';
+import '../second_page1.dart';
+import '../second_page2.dart';
+import '../second_page3.dart';
 
 
 class SecondPage extends StatefulWidget {
@@ -23,7 +23,7 @@ class SecondPage extends StatefulWidget {
 }
 
 class SecondPageState extends State<SecondPage> {
-  var _index = 1;
+  var _index = 0;
   var _pages = [
 
   ];

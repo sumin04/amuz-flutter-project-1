@@ -1,28 +1,45 @@
 
+// ignore_for_file: avoid_init_to_null, unnecessary_ne, unused_local_variablew
+
+import 'dart:async';
 import 'dart:convert';
 
 import 'dart:developer';
 import 'package:http/http.dart' as http;
+
+class Temp {
+  static var temp = null;
+}
+
 // Future이란 지금은 없지만 미래에 요청한 데이터 혹은 에러가 담길 그릇
-Future<List> fetchPost(List<dynamic> list) async {
+Future<List<dynamic>> fetchPost(List <dynamic> list) async {
   List<dynamic> test = [
 
   ];
+
+  if(Temp.temp != null){
+    for (var i = 0; i < Temp.temp.length; i++){
+      list.add(Temp.temp[i]);
+    }
+    log('성예인 멍청이 바보 말미잘');
+
+    return Temp.temp;
+  }
 
   final response =
   // await이란 비동기처리 요청 후 결과가 올 때까지 기다리라는 키워드 또는 예약어
   await http.get(Uri.parse('https://jsonplaceholder.typicode.com/todos'));
 
-  if (response.statusCode == 200) {
+  if(response.statusCode == 200) {
     var datas = json.decode(response.body);
     log("data : ${datas.toString()}");
-    log("data type : ${datas.runtimeType}");
 
-    // print("data size : ${datas.length}");
-
-    for ( var i = 0; i < datas.length; i++){
+    for (var i = 0; i < datas.length; i++){
       list.add(datas[i]);
+      test.add(datas[i]);
     }
+
+    Temp.temp = test;
 
     return test;
   } else {

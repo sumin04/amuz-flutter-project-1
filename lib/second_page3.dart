@@ -8,19 +8,19 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider_app/pages/home_page.dart';
 
-import '../fetch_post.dart';
+import 'fetch_post.dart';
 
-class Page1 extends StatefulWidget {
+class Page3 extends StatefulWidget {
   var userId;
 
-  Page1({Key? key, required this.userId}) : super(key: key);
+  Page3({Key? key, required this.userId}) : super(key: key);
 
   @override
   _UserDataListState createState() => _UserDataListState();
 
 }
 
-class _UserDataListState extends State<Page1> {
+class _UserDataListState extends State<Page3> {
   Future<List>? data;
   List<dynamic> list = [];
 
@@ -32,7 +32,7 @@ class _UserDataListState extends State<Page1> {
     await data;
 
     for(var i = 0; i < list.length; i++){
-      if(list[i]['userId'] == hi){
+      if(list[i]['userId'] == hi && list[i]['completed'] == true){
         test.add(list[i]);
       }
     }

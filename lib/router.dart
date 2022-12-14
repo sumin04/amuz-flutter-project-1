@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider_app/pages/Details_Page.dart';
 import 'package:provider_app/pages/home_page.dart';
 import 'package:provider_app/pages/first_page.dart';
 import 'package:provider_app/pages/second_page.dart';
@@ -33,6 +34,13 @@ final router = GoRouter(
             // return SecondPage(userId: state.params['userId'] as String);
           },
         ),
+        GoRoute(
+          name: 'detail',
+          path: '/second/:userId/detail',
+          builder: (BuildContext context, GoRouterState state) {
+            return DetailPage();
+          },
+        )
   ],
 );
 // class routes extends StatefulWidget {
