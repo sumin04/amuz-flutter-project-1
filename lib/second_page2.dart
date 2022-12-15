@@ -6,6 +6,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider_app/pages/Details_Page.dart';
 import 'package:provider_app/pages/home_page.dart';
 import 'fetch_post.dart';
 
@@ -78,28 +79,28 @@ class _UserDataListState extends State<Page2> {
 
                     },
                     child: SizedBox(
-                      height: 80,
+                      height: 100,
                       child: Card(
                           color: Color(0xfff5f5f5),
+                          margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
-                          child: Container(
-                              padding: EdgeInsets.only(left: 10),
-                              width: double.infinity,
-                              alignment: Alignment.centerLeft,
-                              child: TextButton(
-                                onPressed: (){
-                                  context.go('/second/:userId/detail');
-                                },
-                                child: Text(test[index]['title'].toString(),
-                                  style: TextStyle(
-                                    overflow: TextOverflow.ellipsis,
-                                    color: Colors.grey.shade700,
-                                    fontSize: 20,
-                                  ),
-                                ),
-                              )
+                          child: TextButton(
+                            onPressed: () async{
+                              final person = widget.userId;
+                              context.go('/second/${person}/detail');
+                              final result = await Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) => DetailPage(userId: widget.userId)),
+                              );
+                            },
+                            child: Text(test[index]['title'].toString(),
+                              style: TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                color: Colors.grey.shade700,
+                                fontSize: 20,
+                              ),
+                            ),
                           )
                       ),
                     ),

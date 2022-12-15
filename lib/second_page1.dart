@@ -66,7 +66,7 @@ class _UserDataListState extends State<Page1> {
           );
         } else if(snapshot.hasError){
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: Text(
                 'Error: ${snapshot.error}'
             ),
@@ -83,33 +83,28 @@ class _UserDataListState extends State<Page1> {
 
                     },
                     child: SizedBox(
-                      height: 80,
+                      height: 100,
                       child: Card(
                           color: Color(0xfff5f5f5),
+                          margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
-                          child: Container(
-                            padding: EdgeInsets.only(left: 10),
-                            width: double.infinity,
-                            alignment: Alignment.centerLeft,
-                              child: TextButton(
-                                onPressed: () async{
-                                  final person = widget.userId;
-                                  context.go('/second/${person}/detail');
-                                  final result = await Navigator.push(context, MaterialPageRoute(
-                                    builder: (context) => DetailPage(userId: widget.userId)),
-                                  );
-                                  // print(result);
-                                },
-                                child: Text(test[index]['title'].toString(),
-                                  style: TextStyle(
-                                    overflow: TextOverflow.ellipsis,
-                                    color: Colors.grey.shade700,
-                                    fontSize: 20,
-                                  ),
-                                ),
-                              )
+                          child: TextButton(
+                            onPressed: () async{
+                              final person = widget.userId;
+                              context.go('/second/${person}/detail');
+                              final result = await Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) => DetailPage(userId: widget.userId)),
+                              );
+                            },
+                            child: Text(test[index]['title'].toString(),
+                              style: TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                color: Colors.grey.shade700,
+                                fontSize: 20,
+                              ),
+                            ),
                           )
                       ),
                     ),

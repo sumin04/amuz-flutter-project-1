@@ -67,6 +67,7 @@ class _FirstPageState extends State<FirstPage> {
             }
           ),
             toolbarHeight: 70,
+            backgroundColor: Colors.blue.shade700,
           ),
           body: FutureBuilder(
             future: data,
@@ -84,7 +85,7 @@ class _FirstPageState extends State<FirstPage> {
                 );
               } else if(snapshot.hasError){
                   return Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Text(
                       'Error: ${snapshot.error}'
                     ),
@@ -92,7 +93,7 @@ class _FirstPageState extends State<FirstPage> {
                 }
                 else{
                   return Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: ListView.builder(
                       itemCount: total.length,
                       itemBuilder: (context, index) {
@@ -102,12 +103,13 @@ class _FirstPageState extends State<FirstPage> {
 
                           },
                           child: SizedBox(
-                            height: 110,
+                            height: 100,
                             child: Card(
-                              margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
+                                color: Color(0xfff5f5f5),
+                                margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
                               child: TextButton(
                                 onPressed: (){
                                   // log('FirstPage${total[index]}');
