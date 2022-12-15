@@ -85,24 +85,28 @@ class _UserDataListState extends State<Page1> {
                     child: SizedBox(
                       height: 80,
                       child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
+                          color: Color(0xfff5f5f5),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
                           child: Container(
+                            padding: EdgeInsets.only(left: 10),
                             width: double.infinity,
                             alignment: Alignment.centerLeft,
                               child: TextButton(
-                                onPressed: (){
-                                  context.go('/second/:userId/detail');
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(builder: (context) => const DetailPage('userId')),
-                                  // );
+                                onPressed: () async{
+                                  final person = widget.userId;
+                                  context.go('/second/${person}/detail');
+                                  final result = await Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => DetailPage(userId: widget.userId)),
+                                  );
+                                  // print(result);
                                 },
                                 child: Text(test[index]['title'].toString(),
                                   style: TextStyle(
                                     overflow: TextOverflow.ellipsis,
-                                    fontSize: 30,
+                                    color: Colors.grey.shade700,
+                                    fontSize: 20,
                                   ),
                                 ),
                               )

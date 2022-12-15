@@ -79,9 +79,14 @@ class _UserDataListState extends State<Page3> {
 
                     },
                     child: SizedBox(
-                      height: 90,
+                      height: 80,
                       child: Card(
+                          color: Color(0xfff5f5f5),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
                           child: Container(
+                              padding: EdgeInsets.only(left: 10),
                               width: double.infinity,
                               alignment: Alignment.centerLeft,
                               child: TextButton(
@@ -91,8 +96,8 @@ class _UserDataListState extends State<Page3> {
                                 child: Text(test[index]['title'].toString(),
                                   style: TextStyle(
                                     overflow: TextOverflow.ellipsis,
-                                    fontSize: 30,
                                     color: Colors.grey.shade700,
+                                    fontSize: 20,
                                   ),
                                 ),
                               )

@@ -4,6 +4,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider_app/pages/first_page.dart';
+import 'package:provider_app/pages/second_page.dart';
 
 import '../fetch_post.dart';
 
@@ -18,37 +20,13 @@ class DetailPage extends StatefulWidget {
 }
 
 class _UserDetail extends State<DetailPage>{
-  Future<List>? data;
-  List<dynamic> list = [];
-  List<dynamic> test = [];
 
-  var userId;
-
-  Future<dynamic> init() async {
-    final userId  = int.parse(widget.userId);
-    data = fetchPost(list);
-
-    await data;
-
-    for(var i = 0; i < list.length; i++){
-      if(list[i]['userId'] == userId){
-        test.add(list[i]);
-      }
-      log('${list}');
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    init();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('상세 데이터 페이진데 먼가 이상하다 데이터를 못 받아온다',
+          title: Text('상세 데이터 페이진데 먼가 이상하다... 라우터도 먼가 이상하다 힝구리퐁퐁',
             style: TextStyle(
               fontSize: 23,
             ),
@@ -57,8 +35,11 @@ class _UserDetail extends State<DetailPage>{
               icon: Icon(Icons.arrow_back_ios),
               // 뒤로가기 버튼
               onPressed: () {
+                context.go('/second/${widget.userId}');
                 // Navigator.pop(context);
-                context.go('/first');
+                // Navigator.push(context, MaterialPageRoute(
+                //     builder: (context) => SecondPage(userId: widget.userId)))
+                //     .then((value) => setState((){}));
               }
           ),
         ),
@@ -69,7 +50,8 @@ class _UserDetail extends State<DetailPage>{
                   onPressed: (){
                     context.go('/first');
                   },
-                  child: Text('대충 그럴싸한 글자\n{ } 빼고 데이터 띄우고 싶어요 힝구리핑퐁',
+                  // child: Text('대충 그럴싸한 글자\n{ } 빼고 데이터 띄우고 싶어요 힝구리핑퐁',
+                  child: Text('${widget.userId}',
                     style: TextStyle(
                       fontSize: 20,
                     ),

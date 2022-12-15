@@ -21,15 +21,21 @@ final router = GoRouter(
           name: 'first',
           path: '/first',
           builder: (BuildContext context, GoRouterState state) {
-            // return FirstPage(userId: state.params['userId'] as List<String>);
             return FirstPage();
           },
         ),
+        // GoRoute(
+        //   name: 'two',
+        //   path: '/second',
+        //   builder: (BuildContext context, GoRouterState state) {
+        //     return SecondPage(userId: state.params['userId'] as String);
+        //   },
+        // ),
         GoRoute(
           name: 'second',
           path: '/second/:userId',
           builder: (BuildContext context, GoRouterState state) {
-            log('로그 테스트${state.params['userId']}');
+            // log('로그 테스트${state.params['userId']}');
             return SecondPage(userId: state.params['userId'] as String);
             // return SecondPage(userId: state.params['userId'] as String);
           },
