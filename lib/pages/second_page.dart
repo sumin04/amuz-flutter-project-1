@@ -45,7 +45,8 @@ class SecondPageState extends State<SecondPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('Post List Page'),
         toolbarHeight: 70,
-        backgroundColor: Colors.black54,
+        // backgroundColor: Colors.blue.shade100,
+        backgroundColor: Colors.grey.shade700,
         leading: IconButton(
             icon: Icon(Icons.arrow_back_ios),
             // 뒤로가기 버튼

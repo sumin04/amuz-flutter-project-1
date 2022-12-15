@@ -78,11 +78,25 @@ class _UserDataListState extends State<Page3> {
                     onTap: () {
 
                     },
-                    child: Card(
-                      child: Text(test[index].toString(),
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
+                    child: SizedBox(
+                      height: 90,
+                      child: Card(
+                          child: Container(
+                              width: double.infinity,
+                              alignment: Alignment.centerLeft,
+                              child: TextButton(
+                                onPressed: (){
+                                  context.go('/second/:userId/detail');
+                                },
+                                child: Text(test[index]['title'].toString(),
+                                  style: TextStyle(
+                                    overflow: TextOverflow.ellipsis,
+                                    fontSize: 30,
+                                    color: Colors.grey.shade700,
+                                  ),
+                                ),
+                              )
+                          )
                       ),
                     ),
                   );

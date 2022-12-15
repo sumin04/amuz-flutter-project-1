@@ -21,7 +21,7 @@ Future<List<dynamic>> fetchPost(List <dynamic> list) async {
     for (var i = 0; i < Temp.temp.length; i++){
       list.add(Temp.temp[i]);
     }
-    log('성예인 멍청이 바보 말미잘');
+    // log('성예인 멍청이 바보 말미잘');
 
     return Temp.temp;
   }

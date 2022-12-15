@@ -30,14 +30,13 @@ class _FirstPageState extends State<FirstPage> {
     data = fetchPost(list);
     await data;
 
-    for(var i = 0 ; i < list.length ; i++){
+    for(var i = 0; i < list.length; i++){
       totals.add(list[i]);
       if(list[i]['userId'] == list[i]['userId']){
         total.remove(list[i]['userId']);
       }
       total.add(list[i]['userId']);
     }
-
     return totals;
   }
 
@@ -98,7 +97,6 @@ class _FirstPageState extends State<FirstPage> {
                       itemCount: total.length,
                       itemBuilder: (context, index) {
                         final document = total[index];
-
                         return InkWell(
                           onTap: () {
 

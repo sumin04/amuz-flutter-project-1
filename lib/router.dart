@@ -38,7 +38,7 @@ final router = GoRouter(
           name: 'detail',
           path: '/second/:userId/detail',
           builder: (BuildContext context, GoRouterState state) {
-            return DetailPage();
+            return DetailPage(userId: state.params['userId'] as String);
           },
         )
   ],

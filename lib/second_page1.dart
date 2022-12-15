@@ -6,6 +6,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider_app/pages/Details_Page.dart';
 import 'package:provider_app/pages/home_page.dart';
 
 import 'fetch_post.dart';
@@ -25,9 +26,12 @@ class _UserDataListState extends State<Page1> {
 
   List<dynamic> test = [];
 
+  List<dynamic> dataList = [];
+
   Future<dynamic> init() async {
     final userId = int.parse(widget.userId);
     data = fetchPost(list);
+
     // list = await data;
     await data;
 
@@ -70,7 +74,7 @@ class _UserDataListState extends State<Page1> {
         }
         else{
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: ListView.builder(
                 itemCount: test.length,
                 itemBuilder: (context, index) {
@@ -79,18 +83,29 @@ class _UserDataListState extends State<Page1> {
 
                     },
                     child: SizedBox(
-                      height: 90,
+                      height: 80,
                       child: Card(
-                          child: TextButton(
-                            onPressed: (){
-                              // log('FirstPage${total[index]}');
-                              context.go('/second/:userId/detail');
-                            },
-                            child: Text(test[index].toString(),
-                              style: TextStyle(
-                                fontSize: 30,
-                              ),
-                            ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                          child: Container(
+                            width: double.infinity,
+                            alignment: Alignment.centerLeft,
+                              child: TextButton(
+                                onPressed: (){
+                                  context.go('/second/:userId/detail');
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(builder: (context) => const DetailPage('userId')),
+                                  // );
+                                },
+                                child: Text(test[index]['title'].toString(),
+                                  style: TextStyle(
+                                    overflow: TextOverflow.ellipsis,
+                                    fontSize: 30,
+                                  ),
+                                ),
+                              )
                           )
                       ),
                     ),
