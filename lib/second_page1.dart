@@ -23,16 +23,14 @@ class Page1 extends StatefulWidget {
 class _UserDataListState extends State<Page1> {
   Future<List>? data;
   List<dynamic> list = [];
-
   List<dynamic> test = [];
 
-  List<dynamic> dataList = [];
+  // List<dynamic> dataList = [];
 
   Future<dynamic> init() async {
     final userId = int.parse(widget.userId);
     data = fetchPost(list);
 
-    // list = await data;
     await data;
 
     for(var i = 0; i < list.length; i++){
@@ -59,7 +57,8 @@ class _UserDataListState extends State<Page1> {
                 width: 200,
                 height: 200,
                 child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.blue.shade900),
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      Colors.blue.shade900),
                   strokeWidth: 20,
                 )
             ),

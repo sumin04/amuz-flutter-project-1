@@ -37,7 +37,7 @@ class SecondPageState extends State<SecondPage> {
     ];
     // TODO: implement initState
     super.initState();
-    // log('SecondPage 짜잔${widget.userId}');
+    // log('SecondPage 유저 아이디 ${widget.userId}');
   }
 
   @override
@@ -67,7 +67,6 @@ class SecondPageState extends State<SecondPage> {
         },
         currentIndex: _index,
         items: <BottomNavigationBarItem>[
-          // 하단 탭 메뉴 구성
           BottomNavigationBarItem(
               label: '전체',
               icon: Icon(Icons.clear_all)

@@ -15,8 +15,6 @@ class FirstPage extends StatefulWidget  {
 
   @override
   _FirstPageState createState() => _FirstPageState();
-// static이란 일반 객체를 만들 때, 같이 메모리에 저장하는 것이 아닌
-// 따로 메모리를 두어 static 구문을 객체가 공유하여 사용할 수 있게 해주는 구문
 }
 
 class _FirstPageState extends State<FirstPage> {
@@ -62,7 +60,6 @@ class _FirstPageState extends State<FirstPage> {
             icon: Icon(Icons.arrow_back_ios),
             // 뒤로가기 버튼
             onPressed: () {
-              // Navigator.pop(context);
               context.go('/');
             }
           ),

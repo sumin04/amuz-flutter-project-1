@@ -8,6 +8,8 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 class Temp {
+  // static이란 일반 객체를 만들 때, 같이 메모리에 저장하는 것이 아닌
+  // 따로 메모리를 두어 static 구문을 객체가 공유하여 사용할 수 있게 해주는 구문
   static var temp = null;
 }
 
@@ -21,7 +23,6 @@ Future<List<dynamic>> fetchPost(List <dynamic> list) async {
     for (var i = 0; i < Temp.temp.length; i++){
       list.add(Temp.temp[i]);
     }
-    // log('성예인 멍청이 바보 말미잘');
 
     return Temp.temp;
   }
