@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider_app/pages/Details_Page.dart';
-import 'package:provider_app/pages/home_page.dart';
 import 'package:provider_app/pages/first_page.dart';
 import 'package:provider_app/pages/second_page.dart';
+import 'package:provider_app/pages/home_page.dart';
 
 import 'main.dart';
 
@@ -36,7 +36,10 @@ final router = GoRouter(
           name: 'detail',
           path: '/second/:userId/detail',
           builder: (BuildContext context, GoRouterState state) {
-            return DetailPage(userId: state.params['userId'] as String);
+            return DetailPage(
+              userId: state.params['userId'] as String,
+              // test: state.params['title'] as String,
+            );
           },
         )
   ],

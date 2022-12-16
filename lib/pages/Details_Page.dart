@@ -15,10 +15,10 @@ class DetailPage extends StatefulWidget {
   DetailPage({Key? key, required this.userId}) : super(key: key);
 
   @override
-  _UserDetail createState() => _UserDetail();
+  UserDetail createState() => UserDetail();
 }
 
-class _UserDetail extends State<DetailPage> {
+class UserDetail extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -39,23 +39,35 @@ class _UserDetail extends State<DetailPage> {
           toolbarHeight: 70,
           backgroundColor: Colors.blue.shade700,
         ),
-        body: Container(
+        body: ListView.builder(
+            itemCount: widget.userId.length,
+            itemBuilder: (context, index){
+              return InkWell(
+                onTap: (){
 
-          child: (
-              SizedBox(
-                child: TextButton(
-                  onPressed: () {
-                    context.go('/second/${widget.userId}');
-                  },
-                  // child: Text('${widget.userId}',
-                  child: Text(widget.userId.toString(),
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
+                },
+              child: Card(
+                  color: Color(0xfff5f5f5),
+                  margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                ),
-              )
-          ),
+                  child: SizedBox(
+                    height: 70,
+                    child: TextButton(
+                      onPressed: () {
+                        context.go('/second/${widget.userId}');
+                      },
+                      child: Text('유저 아이디 : ' + widget.userId.toString(),
+                        style: TextStyle(
+                          fontSize: 24,
+                        ),
+                      ),
+                    ),
+                  )
+                )
+              );
+            }
         )
     );
   }
