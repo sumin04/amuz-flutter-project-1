@@ -41,6 +41,9 @@ final router = GoRouter(
             return DetailPage(
               userId: state.params['userId'] as String,
               Id: state.params['id'] as String,
+              test: state.extra as Map,
+              completed: state.extra as Map,
+              // test: state.params['title'] as String,
             );
           },
         )

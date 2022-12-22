@@ -13,7 +13,10 @@ class DetailPage extends StatefulWidget {
   String userId;
   String Id;
 
-  DetailPage({Key? key, required this.userId, required this.Id}) : super(key: key);
+  DetailPage({Key? key, required this.userId, required this.Id, required this.test, required this.completed}) : super(key: key);
+
+  final Map test;
+  final Map completed;
 
   @override
   _UserDetail createState() => _UserDetail();
@@ -23,6 +26,7 @@ class _UserDetail extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    Map userData  = widget.test;
     return Scaffold(
         appBar: AppBar(
           title: Text('상세 데이터 페이진데...',
@@ -47,31 +51,24 @@ class _UserDetail extends State<DetailPage> {
                 onTap: (){
 
                 },
-              child: Card(
-                  color: Color(0xfff5f5f5),
-                  margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: SizedBox(
-                    height: 70,
-                    child: TextButton(
-                      onPressed: () {
-                        context.go('/second/${widget.userId}');
-                      },
-                      child: Text(
+                  child: Column(
+                    // height: 150,
+                    children: [
+                      SizedBox(
+                        child: Text(
                         '아이디 : ${widget.Id} \n'
                         '유저아이디 : ${widget.userId} \n'
-                        // '글 : ${widget.title} \n'
-                        ,
-                      // child: Text('유저 아이디 : ' + widget.userId.toString(),
-                        style: TextStyle(
-                          fontSize: 24,
+                        '타이틀 : ${userData['title']} \n'
+                        '상태 : ${userData['completed']}',
+                          style: TextStyle(
+                            fontSize: 24,
+                          ),
                         ),
                       ),
-                    ),
+                      TextButton(onPressed: () => {}, child: Text('이전 글')),
+                      TextButton(onPressed: () => {}, child: Text('다음 글'))
+                    ],
                   )
-                )
               );
             }
         )

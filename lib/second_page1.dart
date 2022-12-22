@@ -13,6 +13,7 @@ import 'fetch_post.dart';
 
 class Page1 extends StatefulWidget {
   var userId;
+  var Id;
 
   Page1({Key? key, required this.userId}) : super(key: key);
 
@@ -91,10 +92,10 @@ class _UserDataListState extends State<Page1> {
                           child: TextButton(
                             onPressed: () async{
                               final person = widget.userId;
-                              context.go('/second/${person}/detail/${test[index]['id']}');
-                              // final result = await Navigator.push(context, MaterialPageRoute(
-                              //     builder: (context) => DetailPage(userId: widget.userId)),
-                              // );
+                              context.go('/second/${person}/detail/${test[index]['id']}', extra: test[index]);
+
+                              Navigator.pushNamed(context, '/second/${person}/detail/${test[index]['id']}');
+                              log('아무말이나${test}');
                             },
                             child: Text('${test[index]['title']}',
                               style: TextStyle(

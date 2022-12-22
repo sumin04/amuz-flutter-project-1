@@ -33,6 +33,7 @@ Future<List<dynamic>> fetchPost(List <dynamic> list) async {
 
   if(response.statusCode == 200) {
     var datas = json.decode(response.body);
+
     log("data : ${datas.toString()}");
 
     for (var i = 0; i < datas.length; i++){
