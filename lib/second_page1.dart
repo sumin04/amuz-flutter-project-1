@@ -1,5 +1,5 @@
 
-// ignore_for_file: unused_import, use_key_in_widget_constructor, must_be_immutables, use_key_in_widget_constructor, library_private_types_in_public_api, library_private_types_in_public_apis, unnecessary_brace_in_string_interps, duplicate_ignor, unnecessary_newe, unnecessary_ne, duplicate_ignorew, duplicate_ignore, unnecessary_ne, must_be_immutablew, must_be_immutable, use_key_in_widget_constructor, avoid_web_libraries_in_flutter, unused_local_variables, unused_local_variable
+// ignore_for_file: unused_import, use_key_in_widget_constructor, must_be_immutables, use_key_in_widget_constructor, library_private_types_in_public_api, library_private_types_in_public_apis, unnecessary_brace_in_string_interps, duplicate_ignor, unnecessary_newe, unnecessary_ne, duplicate_ignorew, duplicate_ignore, unnecessary_ne, must_be_immutablew, must_be_immutable, use_key_in_widget_constructor, avoid_web_libraries_in_flutter, unused_local_variables, unused_local_variable, non_constant_identifier_names
 
 import 'dart:convert';
 import 'dart:developer';
@@ -30,7 +30,6 @@ class _UserDataListState extends State<Page1> {
   Future<dynamic> init() async {
     final userId = int.parse(widget.userId);
     data = fetchPost(list);
-
     await data;
 
     for(var i = 0; i < list.length; i++){
@@ -92,12 +91,12 @@ class _UserDataListState extends State<Page1> {
                           child: TextButton(
                             onPressed: () async{
                               final person = widget.userId;
-                              context.go('/second/${person}/detail');
-                              final result = await Navigator.push(context, MaterialPageRoute(
-                                  builder: (context) => DetailPage(userId: widget.userId)),
-                              );
+                              context.go('/second/${person}/detail/${test[index]['id']}');
+                              // final result = await Navigator.push(context, MaterialPageRoute(
+                              //     builder: (context) => DetailPage(userId: widget.userId)),
+                              // );
                             },
-                            child: Text(test[index]['title'].toString(),
+                            child: Text('${test[index]['title']}',
                               style: TextStyle(
                                 overflow: TextOverflow.ellipsis,
                                 color: Colors.grey.shade700,

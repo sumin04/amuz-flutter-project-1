@@ -11,20 +11,21 @@ import '../fetch_post.dart';
 // 클릭한 타이틀의 유저 정보 상세보기 데이터 불러오기
 class DetailPage extends StatefulWidget {
   String userId;
+  String Id;
 
-  DetailPage({Key? key, required this.userId}) : super(key: key);
+  DetailPage({Key? key, required this.userId, required this.Id}) : super(key: key);
 
   @override
-  UserDetail createState() => UserDetail();
+  _UserDetail createState() => _UserDetail();
 }
 
-class UserDetail extends State<DetailPage> {
+class _UserDetail extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('상세 데이터 페이진데 먼가 이상하다...',
+          title: Text('상세 데이터 페이진데...',
             style: TextStyle(
               fontSize: 23,
             ),
@@ -58,7 +59,12 @@ class UserDetail extends State<DetailPage> {
                       onPressed: () {
                         context.go('/second/${widget.userId}');
                       },
-                      child: Text('유저 아이디 : ' + widget.userId.toString(),
+                      child: Text(
+                        '아이디 : ${widget.Id} \n'
+                        '유저아이디 : ${widget.userId} \n'
+                        // '글 : ${widget.title} \n'
+                        ,
+                      // child: Text('유저 아이디 : ' + widget.userId.toString(),
                         style: TextStyle(
                           fontSize: 24,
                         ),

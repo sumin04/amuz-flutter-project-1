@@ -29,16 +29,18 @@ final router = GoRouter(
           path: '/second/:userId',
           builder: (BuildContext context, GoRouterState state) {
             // log('로그 테스트${state.params['userId']}');
-            return SecondPage(userId: state.params['userId'] as String);
+            return SecondPage(
+              userId: state.params['userId'] as String,
+            );
           },
         ),
         GoRoute(
           name: 'detail',
-          path: '/second/:userId/detail',
+          path: '/second/:userId/detail/:id',
           builder: (BuildContext context, GoRouterState state) {
             return DetailPage(
               userId: state.params['userId'] as String,
-              // test: state.params['title'] as String,
+              Id: state.params['id'] as String,
             );
           },
         )
