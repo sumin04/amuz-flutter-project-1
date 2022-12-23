@@ -93,7 +93,6 @@ class _UserDataListState extends State<Page1> {
                               context.go('/second/${person}/detail/${test[index]['id']}', extra: test[index]);
 
                               Navigator.pushNamed(context, '/second/${person}/detail/${test[index]['id']}');
-                              log('아무말이나${test}');
                             },
                             child: Text('${test[index]['title']}',
                               style: TextStyle(

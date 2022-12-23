@@ -13,10 +13,8 @@ class DetailPage extends StatefulWidget {
   String userId;
   String Id;
 
-  DetailPage({Key? key, required this.userId, required this.Id, required this.test, required this.completed}) : super(key: key);
-
+  DetailPage({Key? key, required this.userId, required this.Id,required this.test }) : super(key: key);
   final Map test;
-  final Map completed;
 
   @override
   _UserDetail createState() => _UserDetail();
@@ -63,7 +61,7 @@ class _UserDetail extends State<DetailPage> {
                               ),)
                           ),
                           Text(
-                              '아이디 : ${widget.Id}',
+                            '아이디 : ${widget.Id}',
                             style: TextStyle(
                               fontSize: 22,
                             ),
@@ -87,7 +85,7 @@ class _UserDetail extends State<DetailPage> {
                             ),
                           ),
                           Container(
-                            height: 100,
+                              height: 100,
                               margin: EdgeInsets.only(top: 30),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
