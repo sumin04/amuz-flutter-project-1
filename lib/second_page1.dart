@@ -26,8 +26,6 @@ class _UserDataListState extends State<Page1> {
   List<dynamic> list = [];
   List<dynamic> test = [];
 
-  // List<dynamic> dataList = [];
-
   Future<dynamic> init() async {
     final userId = int.parse(widget.userId);
     data = fetchPost(list);

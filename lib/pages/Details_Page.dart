@@ -51,24 +51,77 @@ class _UserDetail extends State<DetailPage> {
                 onTap: (){
 
                 },
-                  child: Column(
-                    // height: 150,
-                    children: [
-                      SizedBox(
-                        child: Text(
-                        '아이디 : ${widget.Id} \n'
-                        '유저아이디 : ${widget.userId} \n'
-                        '타이틀 : ${userData['title']} \n'
-                        '상태 : ${userData['completed']}',
-                          style: TextStyle(
-                            fontSize: 24,
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(20, 40, 20, 40),
+                    child: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            child : Text('빈 공백이 너무 많아서 채우기 위한 글 \n',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.grey.shade500,
+                              ),)
                           ),
-                        ),
-                      ),
-                      TextButton(onPressed: () => {}, child: Text('이전 글')),
-                      TextButton(onPressed: () => {}, child: Text('다음 글'))
-                    ],
-                  )
+                          Text(
+                              '아이디 : ${widget.Id}',
+                            style: TextStyle(
+                              fontSize: 22,
+                            ),
+                          ),
+                          Text(
+                            '유저아이디 : ${widget.userId}',
+                            style: TextStyle(
+                              fontSize: 22,
+                            ),
+                          ),
+                          Text(
+                            '타이틀 : ${userData['title']}',
+                            style: TextStyle(
+                              fontSize: 22,
+                            ),
+                          ),
+                          Text(
+                            '상태 : ${userData['completed']}',
+                            style: TextStyle(
+                              fontSize: 22,
+                            ),
+                          ),
+                          Container(
+                            height: 100,
+                              margin: EdgeInsets.only(top: 30),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Expanded(
+                                      child: TextButton(
+                                        onPressed: () => {
+
+                                        },
+                                        child: Text('이전 글',
+                                          style: TextStyle(
+                                              fontSize: 20
+                                          ),
+                                        ),
+                                      )
+                                  ),
+                                  Expanded(
+                                      child: TextButton(
+                                        onPressed: () => {
+
+                                        },
+                                        child: Text('다음 글',
+                                          style: TextStyle(
+                                              fontSize: 20
+                                          ),
+                                        ),
+                                      )
+                                  ),
+                                ],
+                              )
+                          )
+                        ],
+                    ),
+                  ),
               );
             }
         )
