@@ -12,7 +12,7 @@ import '../fetch_post.dart';
 class DetailPage extends StatefulWidget {
   String userId;
   String Id;
-  Map test;
+  List test;
 
   DetailPage({Key? key, required this.userId, required this.Id, required this.test}) : super(key: key);
 
@@ -24,7 +24,14 @@ class _UserDetail extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    Map userData  = widget.test;
+    List userData  = widget.test;
+    Map value = {};
+    userData.forEach((element) {
+      if(element['id'] == int.parse(widget.Id)){
+        value = element;
+      }
+    });
+    print(value);
 
     return Scaffold(
         appBar: AppBar(
@@ -74,13 +81,13 @@ class _UserDetail extends State<DetailPage> {
                             ),
                           ),
                           Text(
-                            '타이틀 : ${userData['title']}',
+                            '타이틀 : ${value['title']}',
                             style: TextStyle(
                               fontSize: 22,
                             ),
                           ),
                           Text(
-                            '상태 : ${userData['completed']}',
+                            '상태 : ${value['completed']}',
                             style: TextStyle(
                               fontSize: 22,
                             ),
@@ -93,10 +100,7 @@ class _UserDetail extends State<DetailPage> {
                                 children: <Widget>[
                                   Expanded(
                                       child: TextButton(
-                                        onPressed: () => {
-                                          // for(int i = int.parse(widget.Id); i > 20 * (int.parse(widget.userId) - 1 ) + 1; --i){
-                                          //
-                                          // }
+                                        onPressed: () {
 
                                         },
                                         child: Text('이전 글',
@@ -108,10 +112,10 @@ class _UserDetail extends State<DetailPage> {
                                   ),
                                   Expanded(
                                       child: TextButton(
-                                        onPressed: () => {
-                                          for(int i = int.parse(widget.Id); i > 20 * (int.parse(widget.userId)); ++i){
-
-                                          }
+                                        onPressed: () {
+                                          var nextId = userData.indexOf(value);
+                                          // print(userData[++nextId]);
+                                          context.go('/second/${widget.userId}/detail/${userData[++nextId]['id']}', extra: userData);
                                         },
                                         child: Text('다음 글',
                                           style: TextStyle(

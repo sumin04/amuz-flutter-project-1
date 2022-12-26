@@ -90,7 +90,7 @@ class _UserDataListState extends State<Page3> {
                           child: TextButton(
                             onPressed: () async{
                               final person = widget.userId;
-                              context.go('/second/${person}/detail/${test[index]['id']}',extra: test[index]);
+                              context.go('/second/${person}/detail/${test[index]['id']}', extra: test);
                             },
                             child: Text(test[index]['title'].toString(),
                               style: TextStyle(
