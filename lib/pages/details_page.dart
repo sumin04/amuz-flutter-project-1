@@ -1,5 +1,5 @@
 
-// ignore_for_file: must_be_immutable, library_private_types_in_public_api, unnecessary_string_interpolations, avoid_function_literals_in_foreach_calls
+// ignore_for_file: must_be_immutable, library_private_types_in_public_api, unnecessary_string_interpolations, avoid_function_literals_in_foreach_calls, unused_local_variable
 
 import 'dart:developer';
 
@@ -31,7 +31,7 @@ class _UserDetail extends State<DetailPage> {
         value = element;
       }
     });
-    print(value);
+    // print(value);
 
     return Scaffold(
         appBar: AppBar(
@@ -54,9 +54,6 @@ class _UserDetail extends State<DetailPage> {
             itemCount: widget.userId.length,
             itemBuilder: (context, index){
               return InkWell(
-                onTap: (){
-
-                },
                   child: Container(
                     margin: EdgeInsets.fromLTRB(20, 40, 20, 40),
                     child: Column(
@@ -93,16 +90,29 @@ class _UserDetail extends State<DetailPage> {
                             ),
                           ),
                           Container(
-                              height: 100,
+                              height: 200,
                               margin: EdgeInsets.only(top: 30),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Expanded(
+                                  SizedBox(
+                                    width: 150,
+                                    height: 80,
                                       child: TextButton(
                                         onPressed: () {
                                           var previousId = userData.indexOf(value);
+                                          print('벱레벫렙ㄼ${value}');
+
+                                          // bool visible = true;
+                                          // if(userData[--previousId]['id'] == 1){
+                                          //   visible = false;
+                                          //   Text('없다');
+                                          // } else {
+                                          //   visible = true;
+                                          // }
+
                                           context.go('/second/${widget.userId}/detail/${userData[--previousId]['id']}', extra: userData);
+
                                         },
                                         child: Text('이전 글',
                                           style: TextStyle(
@@ -111,7 +121,9 @@ class _UserDetail extends State<DetailPage> {
                                         ),
                                       )
                                   ),
-                                  Expanded(
+                                  SizedBox(
+                                    width: 150,
+                                    height: 80,
                                       child: TextButton(
                                         onPressed: () {
                                           var nextId = userData.indexOf(value);
@@ -124,7 +136,7 @@ class _UserDetail extends State<DetailPage> {
                                           ),
                                         ),
                                       )
-                                  ),
+                                  )
                                 ],
                               )
                           )
