@@ -114,6 +114,11 @@ class _UserDetail extends State<DetailPage> {
                                           context.go('/second/${widget.userId}/detail/${userData[--previousId]['id']}', extra: userData);
 
                                         },
+                                        // child: Visibility(
+                                        //   child: Text('이전 글'
+                                        //   ),
+                                        //   visible: false,
+                                        // ),
                                         child: Text('이전 글',
                                           style: TextStyle(
                                               fontSize: 20

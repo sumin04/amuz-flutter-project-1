@@ -36,7 +36,7 @@ dependencies:
     sdk: flutter
 
   go_router: ^5.2.1
-  url_strategy:
+  url_strategy: ^0.2.0
 #    http: <latest_version>
 
 

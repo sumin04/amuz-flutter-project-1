@@ -18,7 +18,10 @@ import 'package:provider_app/pages/user_list.dart';
 import 'package:provider_app/pages/post_list.dart';
 import 'package:provider_app/router.dart';
 
+import 'package:url_strategy/url_strategy.dart';
+
 void main() {
+  setPathUrlStrategy();
   runApp (MyApp());
 }
 
