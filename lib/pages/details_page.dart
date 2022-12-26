@@ -1,5 +1,5 @@
 
-// ignore_for_file: must_be_immutable, library_private_types_in_public_api, unnecessary_string_interpolations
+// ignore_for_file: must_be_immutable, library_private_types_in_public_api, unnecessary_string_interpolations, avoid_function_literals_in_foreach_calls
 
 import 'dart:developer';
 
@@ -101,7 +101,8 @@ class _UserDetail extends State<DetailPage> {
                                   Expanded(
                                       child: TextButton(
                                         onPressed: () {
-
+                                          var previousId = userData.indexOf(value);
+                                          context.go('/second/${widget.userId}/detail/${userData[--previousId]['id']}', extra: userData);
                                         },
                                         child: Text('이전 글',
                                           style: TextStyle(
