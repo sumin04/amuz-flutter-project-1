@@ -14,8 +14,8 @@ import 'package:get/get_core/src/get_main.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:provider_app/pages/home_page.dart';
-import 'package:provider_app/pages/first_page.dart';
-import 'package:provider_app/pages/second_page.dart';
+import 'package:provider_app/pages/user_list.dart';
+import 'package:provider_app/pages/post_list.dart';
 import 'package:provider_app/router.dart';
 
 void main() {

@@ -6,7 +6,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider_app/pages/Details_Page.dart';
+import 'package:provider_app/pages/details_page.dart';
 import 'package:provider_app/pages/home_page.dart';
 
 import 'fetch_post.dart';
@@ -92,7 +92,7 @@ class _UserDataListState extends State<Page1> {
                               final person = widget.userId;
                               context.go('/second/${person}/detail/${test[index]['id']}', extra: test[index]);
 
-                              Navigator.pushNamed(context, '/second/${person}/detail/${test[index]['id']}');
+                              // Navigator.pushNamed(context, '/second/${person}/detail/${test[index]['id']}');
                             },
                             child: Text('${test[index]['title']}',
                               style: TextStyle(

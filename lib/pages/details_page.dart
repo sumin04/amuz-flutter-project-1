@@ -12,9 +12,9 @@ import '../fetch_post.dart';
 class DetailPage extends StatefulWidget {
   String userId;
   String Id;
+  Map test;
 
-  DetailPage({Key? key, required this.userId, required this.Id,required this.test }) : super(key: key);
-  final Map test;
+  DetailPage({Key? key, required this.userId, required this.Id, required this.test}) : super(key: key);
 
   @override
   _UserDetail createState() => _UserDetail();
@@ -25,6 +25,7 @@ class _UserDetail extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     Map userData  = widget.test;
+
     return Scaffold(
         appBar: AppBar(
           title: Text('상세 데이터 페이진데...',
@@ -93,6 +94,9 @@ class _UserDetail extends State<DetailPage> {
                                   Expanded(
                                       child: TextButton(
                                         onPressed: () => {
+                                          // for(int i = int.parse(widget.Id); i > 20 * (int.parse(widget.userId) - 1 ) + 1; --i){
+                                          //
+                                          // }
 
                                         },
                                         child: Text('이전 글',
@@ -105,7 +109,9 @@ class _UserDetail extends State<DetailPage> {
                                   Expanded(
                                       child: TextButton(
                                         onPressed: () => {
+                                          for(int i = int.parse(widget.Id); i > 20 * (int.parse(widget.userId)); ++i){
 
+                                          }
                                         },
                                         child: Text('다음 글',
                                           style: TextStyle(

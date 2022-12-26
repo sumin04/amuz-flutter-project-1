@@ -8,16 +8,16 @@ import 'package:go_router/go_router.dart';
 import 'package:provider_app/pages/home_page.dart';
 
 import '../fetch_post.dart';
-import 'second_page.dart';
+import 'post_list.dart';
 
 class FirstPage extends StatefulWidget  {
   FirstPage({Key? key}) : super(key: key);
 
   @override
-  _FirstPageState createState() => _FirstPageState();
+  FirstPageState createState() => FirstPageState();
 }
 
-class _FirstPageState extends State<FirstPage> {
+class FirstPageState extends State<FirstPage> {
   Future<List>? data;
   List<dynamic> list = [];
 

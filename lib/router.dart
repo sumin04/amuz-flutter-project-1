@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider_app/pages/Details_Page.dart';
-import 'package:provider_app/pages/first_page.dart';
-import 'package:provider_app/pages/second_page.dart';
+import 'package:provider_app/pages/details_page.dart';
+import 'package:provider_app/pages/user_list.dart';
+import 'package:provider_app/pages/post_list.dart';
 import 'package:provider_app/pages/home_page.dart';
 
 import 'main.dart';
@@ -40,6 +40,7 @@ final router = GoRouter(
               userId: state.params['userId'] as String,
               Id: state.params['id'] as String,
               test: state.extra as Map,
+              // completed: state.extra as Map,
             );
           },
         )

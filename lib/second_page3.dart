@@ -6,7 +6,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider_app/pages/Details_Page.dart';
+import 'package:provider_app/pages/details_page.dart';
 import 'package:provider_app/pages/home_page.dart';
 
 import 'fetch_post.dart';
