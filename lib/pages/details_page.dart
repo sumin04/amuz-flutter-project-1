@@ -1,5 +1,5 @@
 
-// ignore_for_file: must_be_immutable, library_private_types_in_public_api, unnecessary_string_interpolations, avoid_function_literals_in_foreach_calls, unused_local_variable
+// ignore_for_file: must_be_immutable, library_private_types_in_public_api, unnecessary_string_interpolations, avoid_function_literals_in_foreach_calls, unused_local_variable, curly_braces_in_flow_control_structures
 
 import 'dart:developer';
 
@@ -21,6 +21,7 @@ class DetailPage extends StatefulWidget {
 }
 
 class _UserDetail extends State<DetailPage> {
+  // var tcVisibility = true;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class _UserDetail extends State<DetailPage> {
         value = element;
       }
     });
+
     // print(value);
 
     return Scaffold(
@@ -102,23 +104,8 @@ class _UserDetail extends State<DetailPage> {
                                         onPressed: () {
                                           var previousId = userData.indexOf(value);
                                           print('벱레벫렙ㄼ${value}');
-
-                                          // bool visible = true;
-                                          // if(userData[--previousId]['id'] == 1){
-                                          //   visible = false;
-                                          //   Text('없다');
-                                          // } else {
-                                          //   visible = true;
-                                          // }
-
                                           context.go('/second/${widget.userId}/detail/${userData[--previousId]['id']}', extra: userData);
-
                                         },
-                                        // child: Visibility(
-                                        //   child: Text('이전 글'
-                                        //   ),
-                                        //   visible: false,
-                                        // ),
                                         child: Text('이전 글',
                                           style: TextStyle(
                                               fontSize: 20
